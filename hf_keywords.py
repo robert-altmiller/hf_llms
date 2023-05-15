@@ -39,7 +39,7 @@ def modify_python_str(
 
 # COMMAND ----------
 
-# DBTITLE 1,Get Hugging Face Keywords
+# DBTITLE 1,Get Hugging Face Keywords as a Json Object
 # initial tokenizer and model
 hf_model_name = "yanekyuk/bert-uncased-keyword-extractor"
 print(f"initializing hf model: {hf_model_name}.....\n")
@@ -102,7 +102,7 @@ def get_hf_keywords(text: str, ner_model = ner_model) -> list:
 # spark user defined function (UDF)
 keywordsUDF = udf(lambda x: get_hf_keywords(x), StringType()).asNondeterministic()
 
-text = """Keyphrase extraction is a technique in text analysis where you extract the important keyphrases from a document.  Thanks to these keyphrases humans can understand the content of a text very quickly and easily without reading  it completely. Keyphrase extraction was first done primarily by human annotators, who read the text in detail  and then wrote down the most important keyphrases. The disadvantage is that if you work with a lot of documents,  this process can take a lot of time.  Here is where Artificial Intelligence comes in. Currently, classical machine learning methods, that use statistical  and linguistic features, are widely used for the extraction process. Now with deep learning, it is possible to capture  the semantic meaning of a text even better than these classical methods. Classical methods look at the frequency,  occurrence and order of words in the text, whereas these neural approaches can capture long-term semantic dependencies  and context of words in a text."""
+text = """Google is being investigated by the UK’s antitrust watchdog for its dominance in the "ad tech stack," the set of services that facilitate the sale of online advertising space between advertisers and sellers. Google has strong positions at various levels of the ad tech stack and charges fees to both publishers and advertisers. A step back: UK Competition and Markets Authority has also been investigating whether Google and Meta colluded over ads, probing into the advertising agreement between the two companies, codenamed Jedi Blue."""
 print(get_hf_keywords(text))
 
 # COMMAND ----------
