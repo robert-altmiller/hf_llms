@@ -19,15 +19,15 @@ The __yanekyuk/bert-uncased-keyword-extractor__ model is a fine-tuned on the sma
 - Accuracy: 0.9741
 - F1: 0.8684
 
+## Steps to Run Code to Get Keywords and Keyphrases
 
-
-### Clone Down the Repo into Databricks Workspace or Locally in VSCODE: <br>
+### Step 1: Clone Down the Repo into Databricks Workspace or Locally in Visual Studio Code: <br>
 
 - git clone https://github.com/robert-altmiller/hf_llms.git
 
 
-### Step 1: Run the hf_keywords.py Notebook
+### Step 2: Run the hf_keywords.py Notebook
 
-The code is in a single notebook that can be run natively in Databricks or locally in VS CODE or your development IDE of choice.  It has a environment built-in check to know if a hugging face model needs to be downloaded locally.  It also has very good performance when used with Spark User Defined Functions (UDFs) or looping over text or groups of text using multi-threading.
+The code is in a single notebook that can be run natively in Databricks or locally in VS Code or your development IDE of choice.  It has a environment built-in check to know if a hugging face model needs to be downloaded locally.  It also has very good performance when used with Spark User Defined Functions (UDFs) or looping over text or groups of text using multi-threading.  Requirements need to be installed prior to running the notebook and there is a requirements.txt in the local repository.
 
 ![run_notebook.png](/readme_images/run_notebook.png)
