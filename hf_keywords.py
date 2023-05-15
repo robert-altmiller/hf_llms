@@ -70,7 +70,6 @@ def get_hf_keywords(text: str, ner_model = ner_model) -> list:
         entity = keywords[i]["entity"]
         score = keywords[i]["score"]
         word = keywords[i]["word"]
-
         if entity.startswith("B"):
             # Add the previous keyphrase to final_keywords
             if keyphrase_score:
