@@ -7,7 +7,7 @@ __bert-base-uncased__ is a pre-trained model that was introduced by Google as pa
 __BERT__ models come in two sizes: __base__ and __large__. The __base__ model has 12 layers and 110 million parameters. The __large__ model, on the other hand, has 24 layers and 340 million parameters.  The __base__ model is smaller, faster, and requires less computational resources compared to the __large__ model.  The 'uncased' in __bert-base-uncased__ means that the text has been lower-cased before being fed into the model.
 
 
-# Hugging Face Demonstration Highlighting Keywords and Keyphrases
+## Hugging Face Demonstration Highlighting Keywords and Keyphrases
 
 ![hf_example.png](/readme_images/hf_example.png)
 
