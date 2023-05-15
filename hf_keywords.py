@@ -5,7 +5,7 @@
 # COMMAND ----------
 
 # DBTITLE 1,Library Imports
-import string
+import string, re
 from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
