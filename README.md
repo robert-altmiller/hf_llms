@@ -19,7 +19,6 @@ The __yanekyuk/bert-uncased-keyword-extractor__ model is a fine-tuned on the sma
 - Accuracy: 0.9741
 - F1: 0.8684
 
-<br>
 
 ## Steps to Run Code to Get Keywords and Keyphrases <br>
 
