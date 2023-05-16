@@ -38,7 +38,7 @@ Requirements need to be installed prior to running the __hf_keywords.py__ file, 
 
 - It also has very good performance when used with Spark User Defined Functions (UDFs), looping over text in a Python list linearly, or groups of text using multi-threading.  Requirements need to be installed prior to running the notebook and there is a requirements.txt in the local repository that is called from the __hf_keywords__ Python notebook.
 
-![run_notebook.png](/readme_images/run_notebook.png)
+- ![run_notebook.png](/readme_images/run_notebook.png)
 
 ### Step 4: Analyzing the Results From the hf_keywords Notebook <br>
 
