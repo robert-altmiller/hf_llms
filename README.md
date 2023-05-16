@@ -42,3 +42,6 @@ Requirements need to be installed prior to running the __hf_keywords.py__ file, 
 
 ### Step 4: Analyzing the Results From the hf_keywords Notebook <br>
 
+- In analyzing these results its important to note that the __bert_uncased_keyword_extractor__ hugging face model returns results which are all separate keywords and even duplicate keywords with individual scores.  We join the keywords into keyphrases and take an average of the scores to provide you with a unqiue list of keywords and keyphrases for easy use and integration.
+
+- ![analyze_results.png](/readme_images/analyze_results.png)
