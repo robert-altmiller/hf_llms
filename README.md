@@ -26,11 +26,13 @@ The __yanekyuk/bert-uncased-keyword-extractor__ model is a fine-tuned on the sma
 
 - git clone https://github.com/robert-altmiller/hf_llms.git
 
+
 ### Step 2: Install the Libraries requirements.txt <br>
 
 Requirements need to be installed prior to running the __hf_keywords.py__ file, and there is a requirements.txt in the local repository.  If you are using Databricks the __requirments.txt__ that is installed at the top of the __hf_keywords__ Python notebook.
 
 - libraries that need to be installed are __pyspark__, __torch__, and __transformers__.
+
 
 ### Step 3: Run the hf_keywords.py Notebook <br>
 
@@ -40,8 +42,11 @@ Requirements need to be installed prior to running the __hf_keywords.py__ file, 
 
 - ![run_notebook.png](/readme_images/run_notebook.png)
 
+
 ### Step 4: Analyzing the Results From the hf_keywords Notebook <br>
 
-- In analyzing these results its important to note that the __bert_uncased_keyword_extractor__ hugging face model returns results which are all separate keywords and even duplicate keywords with individual scores.  We join the keywords into keyphrases and take an average of the scores to provide you with a unqiue list of keywords and keyphrases for easy use and integration.
+- In analyzing these results its important to note that the __bert_uncased_keyword_extractor__ hugging face model returns results which are all separate keywords and even duplicate keywords with individual scores.  
+
+- We join the keywords into keyphrases and take an average of the scores to provide you with a unqiue list of keywords and keyphrases for easy use and integration.
 
 - ![analyze_results.png](/readme_images/analyze_results.png)
