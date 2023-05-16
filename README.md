@@ -26,13 +26,13 @@ The __yanekyuk/bert-uncased-keyword-extractor__ model is a fine-tuned on the sma
 
 - git clone https://github.com/robert-altmiller/hf_llms.git
 
-### Step 2: Install the Libraries requirements.txt : <br>
+### Step 2: Install the Libraries requirements.txt <br>
 
 Requirements need to be installed prior to running the __hf_keywords.py__ file, and there is a requirements.txt in the local repository.  If you are using Databricks the __requirments.txt__ that is installed from the __hf_keywords__ Python notebook.
 
 - libraries that need to be installed are __pyspark__, __torch__, and __transformers__.
 
-### Step 3: Run the hf_keywords.py Notebook
+### Step 3: Run the hf_keywords.py Notebook <br>
 
 The code is in a single notebook that can be run natively in Databricks, locally in VS Code or your development IDE of choice.  It has a environment built-in check for Databricks to run the keywords unit test with a Spark dataframe + UDF.<br>
 
@@ -40,5 +40,5 @@ It also has very good performance when used with Spark User Defined Functions (U
 
 ![run_notebook.png](/readme_images/run_notebook.png)
 
-### Step 4: Analyzing the Results From the hf_keywords Notebook
+### Step 4: Analyzing the Results From the hf_keywords Notebook <br>
 
