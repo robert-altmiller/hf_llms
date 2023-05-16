@@ -36,7 +36,7 @@ Requirements need to be installed prior to running the __hf_keywords.py__ file, 
 
 - The code is in a single notebook that can be run natively in Databricks, locally in VS Code or your development IDE of choice.  It has a environment built-in check for '__Databricks__' to run the keywords unit test with a Spark dataframe + Spark UDF in Databricks _only_.<br>
 
-- It also has very good performance when used with Spark User Defined Functions (UDFs), looping over text in a Python list linearly, or groups of text using multi-threading.  Requirements need to be installed prior to running the notebook and there is a requirements.txt in the local repository that is called from the __hf_keywords__ Python notebook.
+- It also has very good performance when used with Spark User Defined Functions (UDFs), looping over text in a Python list linearly, or groups of text using multi-threading.  Requirements need to be installed prior to running the notebook, and there is a requirements.txt in the local repository that is called from the __hf_keywords__ Python notebook.
 
 - ![run_notebook.png](/readme_images/run_notebook.png)
 
