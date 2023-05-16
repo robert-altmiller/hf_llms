@@ -9,9 +9,8 @@ __BERT__ models come in two sizes: __base__ and __large__. The __base__ model ha
 
 ## Hugging Face Demonstration Highlighting Keywords and Keyphrases
 
-<img src="/readme_images/hf_example.png" alt="drawing" width="400" length="300"/>
-<!-- 
-![hf_example.png](/readme_images/hf_example.png) -->
+<img src="/readme_images/hf_example.png" alt="drawing" width="500" length="500"/>
+
 
 The __yanekyuk/bert-uncased-keyword-extractor__ model is a fine-tuned on the smaller version of the __BERT__ models: __bert-base-uncased__, and it achieves the following results on the evaluation set.
 
