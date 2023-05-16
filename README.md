@@ -28,7 +28,7 @@ The __yanekyuk/bert-uncased-keyword-extractor__ model is a fine-tuned on the sma
 
 ### Step 2: Install the Libraries requirements.txt <br>
 
-Requirements need to be installed prior to running the __hf_keywords.py__ file, and there is a requirements.txt in the local repository.  If you are using Databricks the __requirments.txt__ that is installed from the __hf_keywords__ Python notebook.
+Requirements need to be installed prior to running the __hf_keywords.py__ file, and there is a requirements.txt in the local repository.  If you are using Databricks the __requirments.txt__ that is installed at the top of the __hf_keywords__ Python notebook.
 
 - libraries that need to be installed are __pyspark__, __torch__, and __transformers__.
 
