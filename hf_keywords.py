@@ -5,10 +5,19 @@
 # COMMAND ----------
 
 # DBTITLE 1,Library Imports
-import string, re
+import os, pathlib, re, string
 from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
+
+# COMMAND ----------
+
+# DBTITLE 1,Get Environment (Local or Databricks)
+path = os.getcwd()
+if "Workspace" in path:
+  environment = "databricks"
+else: environment = "local"
+print(f"environment: {environment}")
 
 # COMMAND ----------
 
@@ -103,6 +112,7 @@ def get_hf_keywords(text: str, ner_model = ner_model) -> list:
 # spark user defined function (UDF)
 keywordsUDF = udf(lambda x: get_hf_keywords(x), StringType()).asNondeterministic()
 
+
 # Keywords Function Unit Test
 text = """Google is being investigated by the UK’s antitrust watchdog for its dominance in the "ad tech stack," the set of services that facilitate the sale of online advertising space between advertisers and sellers. Google has strong positions at various levels of the ad tech stack and charges fees to both publishers and advertisers. A step back: UK Competition and Markets Authority has also been investigating whether Google and Meta colluded over ads, probing into the advertising agreement between the two companies, codenamed Jedi Blue."""
 print(get_hf_keywords(text))
@@ -110,43 +120,42 @@ print(get_hf_keywords(text))
 # COMMAND ----------
 
 # DBTITLE 1,Get Hugging Face Keywords Using a Spark Dataframe and User Defined Function
-# Create schema structures
-schema = StructType([StructField('text', StringType(), True)])
+# check the environment
+if environment == "databricks":
 
-# define some summary text data
-text1 = """
-  Hugging Face is an artificial intelligence (AI) company known for its work in natural language processing (NLP). 
-  The company has developed several highly influential NLP tools and models. One of Hugging Face's most significant contributions is 
-  the Transformers library, an open-source library for NLP tasks. The library provides thousands of pre-trained models to perform 
-  tasks on texts such as translation, summarization, text generation, classification, and more. 
-  These models include BERT, GPT-2, GPT-3, T5, and many others.
+  # Create schema structures
+  schema = StructType([StructField('text', StringType(), True)])
+
+  # define some summary text data
+  text1 = """
+    Hugging Face is an artificial intelligence (AI) company known for its work in natural language processing (NLP). 
+    The company has developed several highly influential NLP tools and models. One of Hugging Face's most significant contributions is 
+    the Transformers library, an open-source library for NLP tasks. The library provides thousands of pre-trained models to perform 
+    tasks on texts such as translation, summarization, text generation, classification, and more. 
+    These models include BERT, GPT-2, GPT-3, T5, and many others.
+    """
+
+  text2 = """
+    Google is being investigated by the UK’s antitrust watchdog for its dominance in the "ad tech stack," the set of 
+    services that facilitate the sale of online advertising space between advertisers and sellers. Google has strong 
+    positions at various levels of the ad tech stack and charges fees to both publishers and advertisers. A step back: 
+    UK Competition and Markets Authority has also been investigating whether Google and Meta colluded over ads, 
+    probing into the advertising agreement between the two companies, codenamed Jedi Blue.
+    """
+
+  text3 = """
+  Hydration has different meanings depending on the context.  In the context of human biology and health, 
+  hydration generally refers to the process of absorbing water. The human body needs to maintain an adequate amount of water 
+  for its physiological processes such as digestion, absorption, circulation, creation of saliva, transportation of nutrients, 
+  and maintenance of body temperature. In chemistry, hydration is a specific type of chemical reaction where a substance 
+  combines with water. For example, when an anhydrous substance (one without water) absorbs water from its surroundings, it is said 
+  to be hydrated. The attached water molecules can either be loosely attached, as in surface adsorption, or more tightly incorporated 
+  into the substance's structure, forming hydrates.
   """
 
-text2 = """
-  Google is being investigated by the UK’s antitrust watchdog for its dominance in the "ad tech stack," the set of 
-  services that facilitate the sale of online advertising space between advertisers and sellers. Google has strong 
-  positions at various levels of the ad tech stack and charges fees to both publishers and advertisers. A step back: 
-  UK Competition and Markets Authority has also been investigating whether Google and Meta colluded over ads, 
-  probing into the advertising agreement between the two companies, codenamed Jedi Blue.
-  """
+  # intialize spark dataframe with the text defined above
+  df_data = spark.createDataFrame(data = [[text1], [text2], [text3]], schema = schema)
 
-text3 = """
-Hydration has different meanings depending on the context.  In the context of human biology and health, 
-hydration generally refers to the process of absorbing water. The human body needs to maintain an adequate amount of water 
-for its physiological processes such as digestion, absorption, circulation, creation of saliva, transportation of nutrients, 
-and maintenance of body temperature. In chemistry, hydration is a specific type of chemical reaction where a substance 
-combines with water. For example, when an anhydrous substance (one without water) absorbs water from its surroundings, it is said 
-to be hydrated. The attached water molecules can either be loosely attached, as in surface adsorption, or more tightly incorporated 
-into the substance's structure, forming hydrates.
-"""
-
-# intialize spark dataframe with the text defined above
-df_data = spark.createDataFrame(data = [[text1], [text2], [text3]], schema = schema)
-
-# caching ensures a single udf call with spark lazy loading logic or if we need to display this dataframe
-df_data = df_data.withColumn('keywords_payload', keywordsUDF(df_data["text"])).cache()
-display(df_data)
-# caching ensures a single api call with spark lazy loading logic or if we need to display this dataframe
-# df_data = flatten_df(format_json_col_as_struct(df_data, 'keywords'), "") \
-#     .cache()
-
+  # caching ensures a single udf call with spark lazy loading logic or if we need to display this dataframe
+  df_data = df_data.withColumn('keywords_payload', keywordsUDF(df_data["text"])).cache()
+  display(df_data)
