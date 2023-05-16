@@ -9,7 +9,7 @@ __BERT__ models come in two sizes: __base__ and __large__. The __base__ model ha
 
 ## Hugging Face Demonstration Highlighting Keywords and Keyphrases
 
-<img src="/readme_images/hf_example.png" alt="drawing" width="200"/>
+<img src="/readme_images/hf_example.png" alt="drawing" width="400" length="300"/>
 <!-- 
 ![hf_example.png](/readme_images/hf_example.png) -->
 
