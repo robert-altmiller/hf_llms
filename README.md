@@ -1,4 +1,4 @@
-# Get Text Words Using Hugging Face Large Language Model (yanekyuk/bert-uncased-keyword-extractor)
+# Get Text Keywords and Keyphrases Using Large Language Model (yanekyuk/bert-uncased-keyword-extractor)
 
 __BERT__ models are typically used by fine-tuning them for specific tasks, such as text classification, named entity recognition, or question answering. The pre-training process allows them to learn a general understanding of language, which can then be tailored to specific tasks with a relatively small amount of task-specific training data.  
 
